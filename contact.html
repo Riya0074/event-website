@@ -176,6 +176,11 @@
       font-size: 1.2rem;
     }
 
+    .info-item .email-highlight {
+      color: #ffccff;
+      font-weight: bold;
+    }
+
     .social-links {
       display: flex;
       gap: 1rem;
@@ -235,21 +240,29 @@
       position: relative;
     }
 
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #4a148c;
+      font-weight: 600;
+    }
+
     .form-group span {
       position: absolute;
       left: 15px;
-      top: 50%;
+      top: 45px;
       transform: translateY(-50%);
       color: #9c27b0;
     }
 
     .form-group textarea + span {
-      top: 20px;
+      top: 30px;
       transform: none;
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.8rem 0.8rem 0.8rem 2.5rem;
       border-radius: 5px;
@@ -258,8 +271,14 @@
       transition: all 0.3s;
     }
 
+    .form-group input[type="date"] {
+      padding-left: 2.5rem;
+      color: #555;
+    }
+
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       border-color: #9c27b0;
       outline: none;
       box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.2);
@@ -410,6 +429,25 @@
       max-height: 500px;
     }
 
+    .form-message {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .form-message.success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+    }
+
+    .form-message.error {
+      background-color: #ffebee;
+      color: #c62828;
+      border: 1px solid #ef9a9a;
+    }
+
     footer {
       background-color: #4a148c;
       color: white;
@@ -505,7 +543,6 @@
       <a href="about.html">About</a>
       <a href="service.html">Services</a>
       <a href="contact.html">Contact</a>
-      <a href="#">Help</a>
     </div>
   </nav>
 
@@ -536,6 +573,7 @@
         <i class="fas fa-envelope"></i>
         <div class="content">
           <h3>Email Us</h3>
+          <p><span class="email-highlight">riyataliyan2006@gmail.com</span></p>
           <p>info@bloomlineevents.com</p>
           <p>bookings@bloomlineevents.com</p>
         </div>
@@ -558,33 +596,59 @@
 
     <div class="contact-form">
       <h2>Send Us A Message</h2>
-      <form action="#" method="post">
+      <div id="form-success-message" class="form-message success">
+        Your message has been sent successfully! We'll get back to you soon.
+      </div>
+      <div id="form-error-message" class="form-message error">
+        Oops! Something went wrong. Please try again later.
+      </div>
+      <form action="#" method="post" id="contact-form">
         <div class="form-row">
           <div class="form-group">
+            <label for="name">Your Name</label>
             <span><i class="fas fa-user"></i></span>
-            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
           </div>
           <div class="form-group">
+            <label for="phone">Phone Number</label>
             <span><i class="fas fa-phone"></i></span>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
           </div>
         </div>
+        
         <div class="form-group">
+          <label for="email">Email Address</label>
           <span><i class="fas fa-envelope"></i></span>
-          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
         </div>
+        
         <div class="form-group">
+          <label for="event-date">Event Date</label>
           <span><i class="fas fa-calendar-alt"></i></span>
-          <input type="text" name="event-date" placeholder="Event Date (if applicable)">
+          <input type="date" id="event-date" name="event-date" min="2025-04-24">
         </div>
+        
         <div class="form-group">
+          <label for="event-type">Event Type</label>
           <span><i class="fas fa-tag"></i></span>
-          <input type="text" name="event-type" placeholder="Event Type (Wedding, Birthday, Corporate, etc.)">
+          <select id="event-type" name="event-type">
+            <option value="">Select Event Type</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Corporate">Corporate Event</option>
+            <option value="Birthday">Birthday Celebration</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Product Launch">Product Launch</option>
+            <option value="Conference">Conference</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
+        
         <div class="form-group">
+          <label for="message">Your Message</label>
           <span><i class="fas fa-comment"></i></span>
-          <textarea name="message" placeholder="Tell us about your event requirements" required></textarea>
+          <textarea id="message" name="message" placeholder="Tell us about your event requirements and any special requests..." required></textarea>
         </div>
+        
         <button type="submit" class="btn">Send Message</button>
       </form>
     </div>
@@ -625,6 +689,12 @@
           <p>Absolutely! We understand that every client has different needs and budget constraints. Our team can work with you to create a customized package that meets your requirements while staying within your budget.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <div class="faq-question">How quickly do you respond to inquiries?</div>
+        <div class="faq-answer">
+          <p>We aim to respond to all inquiries within 24-48 hours. For urgent matters, we recommend calling us directly at the numbers provided above.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -659,6 +729,33 @@
         item.classList.toggle('active');
       });
     });
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('form-success-message');
+    const errorMessage = document.getElementById('form-error-message');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Here you would normally handle the form submission via AJAX
+      // For demonstration purposes, we'll just show the success message
+      
+      // Simulate form processing
+      setTimeout(() => {
+        successMessage.style.display = 'block';
+        contactForm.reset();
+        
+        // Hide the message after 5 seconds
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+      }, 1000);
+    });
+
+    // Set minimum date for the event date picker to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('event-date').setAttribute('min', today);
   </script>
 
 </body>

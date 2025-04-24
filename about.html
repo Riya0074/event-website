@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - Vibrance Events</title>
+  <title>About Us - Bloomline Events</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -12,116 +13,547 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fefefe;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fafafa;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     a {
       color: #6a1b9a;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
+    a:hover {
+      color: #9c27b0;
+    }
+
+    /* Navigation Styles */
     nav {
-      background-color: #f3e5f5;
+      background-color: #f5f0fa;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    nav a {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
       color: #6a1b9a;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      letter-spacing: 1px;
     }
 
-    nav a:hover {
-      color: #4a148c;
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #6a1b9a;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #9c27b0;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
+    /* Header Styles */
     header {
-      background-image: url('https://images.unsplash.com/photo-1503424886307-b090341d25d1?auto=format&fit=crop&w=1400&q=80');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1503424886307-b090341d25d1?auto=format&fit=crop&w=1400&q=80');
       background-size: cover;
       background-position: center;
-      height: 320px;
+      background-attachment: fixed;
+      height: 400px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: white;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+      position: relative;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
       text-align: center;
     }
 
+    /* Main Content Styles */
     main {
-      padding: 2rem;
-      max-width: 1200px;
+      padding: 3rem 5%;
+      max-width: 1300px;
       margin: auto;
     }
 
     .section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .section-title {
-      font-size: 1.6rem;
+      font-size: 2rem;
       color: #6a1b9a;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: #9c27b0;
     }
 
     p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
     }
 
     ul {
       margin-left: 1.5rem;
+      list-style-type: none;
     }
 
     ul li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    ul li i {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      color: #9c27b0;
     }
 
     .highlight {
-      color: #d32f2f;
-      font-weight: bold;
+      color: #9c27b0;
+      font-weight: 600;
     }
 
-    .image-wrapper {
+    /* Card Grid for Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .team-img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .team-info {
+      padding: 1.2rem;
+    }
+
+    .team-name {
+      color: #6a1b9a;
+      margin-bottom: 0.3rem;
+      font-size: 1.2rem;
+    }
+
+    .team-role {
+      color: #9e9e9e;
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #6a1b9a;
+      font-size: 1.1rem;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background-color: #f5f0fa;
+      padding: 3rem 5%;
       text-align: center;
       margin: 2rem 0;
     }
 
-    .image-wrapper img {
-      max-width: 80%;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    .quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #6a1b9a;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
     }
 
+    .quote:before, .quote:after {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      opacity: 0.2;
+      color: #9c27b0;
+    }
+
+    .quote:before {
+      top: -40px;
+      left: -20px;
+    }
+
+    .quote:after {
+      bottom: -70px;
+      right: -20px;
+    }
+
+    .quote-author {
+      margin-top: 2rem;
+      font-weight: 600;
+    }
+
+    /* Image Sections */
+    .image-wrapper {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .image-wrapper img {
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.5s ease;
+    }
+
+    .image-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Stats Section */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .stat-item {
+      background-color: white;
+      padding: 2rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #6a1b9a;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #757575;
+    }
+
+    /* Gallery */
     .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 200px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(106, 27, 154, 0.7);
+      color: white;
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: #e1bee7;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .timeline-date {
+      color: #9c27b0;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid #9c27b0;
+      border-radius: 50%;
+      top: 25px;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd)::after {
+      right: -12px;
+    }
+
+    .timeline-item:nth-child(even)::after {
+      left: -12px;
+    }
+
+    /* Testimonial Section */
+    .testimonials {
+      margin: 3rem 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #6a1b9a;
+    }
+
+    .testimonial-company {
+      font-size: 0.9rem;
+      color: #757575;
+    }
+
+    /* Clients Section */
+    .clients-section {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .clients-list {
+      display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 1rem;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .gallery img {
-      width: 250px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .client-logo {
+      height: 60px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
     }
 
-    .brand-list {
-      font-style: italic;
+    .client-logo:hover {
+      opacity: 1;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background-color: #f3e5f5;
+      text-align: center;
+      padding: 3rem 5%;
+      border-radius: 15px;
+      margin-top: 3rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      color: #6a1b9a;
+      margin-bottom: 1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #9c27b0;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #6a1b9a;
+      transform: translateY(-3px);
+      color: white;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #f5f0fa;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .timeline::after {
+        left: 40px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+
+      .timeline-item::after {
+        left: 30px;
+      }
     }
   </style>
 </head>
@@ -132,64 +564,275 @@
     <div class="logo">Bloomline Events</div>
     <div class="menu-toggle" id="menu-toggle">&#9776;</div>
     <div class="nav-links" id="nav-links">
-      <a href="#">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="service.html">Services</a>
-      <a href="#">Contact</a>
-      
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
+
+  <!-- Header -->
   <header>
-    <h1>Welcome to Vibrance Events</h1>
+    <h1>About Bloomline Events</h1>
+    <p>Crafting Memorable Experiences Since 2011</p>
   </header>
 
   <main>
+    <!-- Introduction Section -->
     <section class="section">
-      <p><strong>At Vibrance Events</strong>, we believe every event is an experience waiting to unfold. With over a decade of industry experience, we specialize in curating unforgettable moments—whether it's a high-profile corporate gala, an intimate wedding, or a buzzing product launch.</p>
+      <h2 class="section-title">Our Story</h2>
+      <p>Founded in 2011, <strong>Bloomline Events</strong> began with a simple vision: to transform ordinary gatherings into extraordinary experiences. What started as a boutique event planning service has blossomed into a full-service event management company trusted by clients worldwide.</p>
 
-      <p>Our team is made up of passionate planners, creative designers, and detail-obsessed coordinators who thrive on turning your ideas into reality. From the first brainstorming session to the final guest departure, we handle every aspect with precision and care.</p>
+      <p>Our journey has been shaped by passion, innovation, and an unwavering commitment to excellence. With each event, we've refined our approach, expanded our expertise, and deepened our understanding of what makes an event truly unforgettable.</p>
+      
+      <p>Today, we stand as an industry leader, known for our creative vision, meticulous planning, and flawless execution. Whether you're planning an intimate wedding, a high-profile corporate event, or a large-scale festival, we bring the same dedication and attention to detail to every project.</p>
     </section>
 
     <div class="image-wrapper">
-      <img src="https://images.unsplash.com/photo-1565120130290-6ec3fbf6f52a?auto=format&fit=crop&w=1000&q=80" alt="Our Event Services">
+      <img src="https://images.unsplash.com/photo-1511795409834-c70f1b9f3542?auto=format&fit=crop&w=1200&q=80" alt="Bloomline Events Team">
     </div>
 
+    <!-- Mission & Values Section -->
     <section class="section">
-      <h2 class="section-title">🎯 Our Mission</h2>
-      <p>To deliver seamless, innovative, and memorable events that exceed expectations—every time.</p>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">🌟 What We Do</h2>
+      <h2 class="section-title">Our Mission & Values</h2>
+      <p>At Bloomline Events, our mission is to create immersive and transformative experiences that exceed expectations and leave lasting impressions. We believe that every event tells a story, and we're dedicated to making yours resonate.</p>
+      
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Events Organized</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">25</div>
+          <div class="stat-label">Industry Awards</div>
+        </div>
+      </div>
+      
+      <p>Our core values guide everything we do:</p>
       <ul>
-        <li>💼 Corporate Events & Conferences</li>
-        <li>💍 Luxury Weddings</li>
-        <li>🚀 Product Launches</li>
-        <li>🏢 Exhibitions & Trade Shows</li>
-        <li>🎉 <span class="highlight">Private Parties & Celebrations</span></li>
+        <li><i class="fas fa-gem"></i> <strong>Excellence</strong> - We never settle for anything less than extraordinary</li>
+        <li><i class="fas fa-lightbulb"></i> <strong>Innovation</strong> - We embrace creativity and fresh perspectives</li>
+        <li><i class="fas fa-handshake"></i> <strong>Integrity</strong> - We build relationships based on trust and transparency</li>
+        <li><i class="fas fa-heart"></i> <strong>Passion</strong> - We love what we do, and it shows in our work</li>
+        <li><i class="fas fa-users"></i> <strong>Collaboration</strong> - We believe in the power of partnership</li>
       </ul>
     </section>
 
+    <!-- Quote Section -->
+    <div class="quote-section">
+      <div class="quote">
+        Every event has a story to tell. We don't just plan events; we craft experiences that become cherished memories for a lifetime.
+      </div>
+      <div class="quote-author">- Sarah Williams, Founder & CEO</div>
+    </div>
+
+    <!-- Services Section -->
     <section class="section">
-      <h2 class="section-title">💡 Why Choose Us</h2>
+      <h2 class="section-title">Our Expertise</h2>
+      <p>With over a decade of industry experience, we've developed specialized expertise across a diverse range of events. Our comprehensive services are tailored to meet your unique needs, ensuring every detail is perfected.</p>
+      
       <ul>
-        <li>✅ 12+ years of proven excellence</li>
-        <li>🌍 Trusted by 100+ clients globally</li>
-        <li>🎨 In-house creative and production teams</li>
-        <li>📋 Personalized event strategies</li>
+        <li><i class="fas fa-briefcase"></i> <strong>Corporate Events & Conferences</strong> - From executive retreats to large-scale industry conferences</li>
+        <li><i class="fas fa-ring"></i> <strong>Luxury Weddings</strong> - Creating magical moments for your special day</li>
+        <li><i class="fas fa-rocket"></i> <strong>Product Launches</strong> - Making your brand shine with innovative presentation concepts</li>
+        <li><i class="fas fa-building"></i> <strong>Exhibitions & Trade Shows</strong> - Designing impactful displays that attract attention</li>
+        <li><i class="fas fa-glass-cheers"></i> <span class="highlight">Private Parties & Celebrations</span> - Crafting personalized experiences for milestone moments</li>
+        <li><i class="fas fa-music"></i> <strong>Festivals & Concerts</strong> - Managing large-scale entertainment events</li>
+        <li><i class="fas fa-graduation-cap"></i> <strong>Educational Workshops</strong> - Creating engaging learning environments</li>
       </ul>
-      <p class="brand-list">We’ve worked with brands like <strong>Coca-Cola</strong>, <strong>Google</strong>, and <strong>L’Oréal</strong>, and we’re ready to make your next event just as impactful.</p>
     </section>
 
-    <section id="gallery" class="section">
-      <h2 class="section-title">📸 Our Event Gallery</h2>
-      <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?auto=format&fit=crop&w=600&q=80" alt="Marriage Event">
-        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Birthday Event">
-        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=600&q=80" alt="Corporate Event">
+    <!-- Team Section -->
+    <section class="section">
+      <h2 class="section-title">Meet Our Team</h2>
+      <p>Our diverse team of passionate professionals brings creativity, expertise, and dedication to every project. With backgrounds spanning event management, design, marketing, and hospitality, we combine our unique talents to deliver exceptional experiences.</p>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Sarah Williams" class="team-img">
+          <div class="team-info">
+            <h3 class="team-name">Sarah Williams</h3>
+            <div class="team-role">Founder & CEO</div>
+            <p>With 15+ years in the events industry, Sarah's vision and leadership have shaped Bloomline into what it is today.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="David Chen" class="team-img">
+          <div class="team-info">
+            <h3 class="team-name">David Chen</h3>
+            <div class="team-role">Creative Director</div>
+            <p>David brings dreams to life with his innovative designs and creative vision for every event.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Emily Rodriguez" class="team-img">
+          <div class="team-info">
+            <h3 class="team-name">Emily Rodriguez</h3>
+            <div class="team-role">Lead Event Coordinator</div>
+            <p>Emily's attention to detail and organizational skills ensure flawless execution of every event.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=600&q=80" alt="Michael Taylor" class="team-img">
+          <div class="team-info">
+            <h3 class="team-name">Michael Taylor</h3>
+            <div class="team-role">Technical Director</div>
+            <p>Michael oversees all technical aspects, from sound and lighting to digital experiences.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  </main>
 
-</body>
-</html>
+    <!-- Our Journey Timeline -->
+    <section class="section">
+      <h2 class="section-title">Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2011</div>
+            <h3>The Beginning</h3>
+            <p>Bloomline Events was founded with a focus on intimate gatherings and small corporate events.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2013</div>
+            <h3>First Major Client</h3>
+            <p>Secured our first major corporate client, leading to expansion of our team and services.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2016</div>
+            <h3>International Expansion</h3>
+            <p>Opened our second office and began planning events across Europe and Asia.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2018</div>
+            <h3>Industry Recognition</h3>
+            <p>Received our first of many "Best Event Planning Agency" awards.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2021</div>
+            <h3>Digital Transformation</h3>
+            <p>Pioneered hybrid and virtual event experiences, adapting to changing industry needs.</p>
+           </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">2024</div>
+            <h3>Today</h3>
+            <p>Continuing to innovate and set new standards in the events industry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Bloomline Events exceeded all our expectations. Their attention to detail and creative approach made our product launch an incredible success. We've received countless compliments from our guests and stakeholders."
+          </div>
+          <div class="testimonial-author">Jennifer Adams</div>
+          <div class="testimonial-company">Marketing Director, TechNova</div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Working with the Bloomline team was a dream come true for our wedding. They captured our vision perfectly and handled everything with such professionalism that we were able to truly enjoy our special day without worry."
+          </div>
+          <div class="testimonial-author">Mark & Lisa Johnson</div>
+          <div class="testimonial-company">Wedding Clients</div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Our annual conference has never run so smoothly. From the initial planning stages to the final execution, Bloomline's expertise was evident. They've set a new standard for our events."
+          </div>
+          <div class="testimonial-author">Robert Chen</div>
+          <div class="testimonial-company">CEO, Global Innovations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Clients Section -->
+    <section class="section clients-section">
+      <h2 class="section-title">Trusted By Industry Leaders</h2>
+      <p class="highlight">We've collaborated with renowned brands across various industries, from technology giants to luxury fashion houses.</p>
+      <div class="clients-list">
+        <img src="/api/placeholder/160/60" alt="Google" class="client-logo">
+        <img src="/api/placeholder/160/60" alt="Microsoft" class="client-logo">
+        <img src="/api/placeholder/160/60" alt="Coca-Cola" class="client-logo">
+        <img src="/api/placeholder/160/60" alt="L'Oréal" class="client-logo">
+        <img src="/api/placeholder/160/60" alt="Samsung" class="client-logo">
+        <img src="/api/placeholder/160/60" alt="BMW" class="client-logo">
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="section">
+      <h2 class="section-title">Event Gallery</h2>
+      <p>Browse through snapshots of our most memorable events, showcasing the diversity and quality of our work.</p>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=80" alt="Luxury Wedding">
+          <div class="gallery-overlay">Luxury Wedding</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80" alt="Corporate Conference">
+          <div class="gallery-overlay">Annual Tech Conference</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&w=600&q=80" alt="Product Launch">
+          <div class="gallery-overlay">Fashion Brand Launch</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1470753937643-efeb931202a9?auto=format&fit=crop&w=600&q=80" alt="Summer Festival">
+          <div class="gallery-overlay">Summer Music Festival</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=600&q=80" alt="Charity Gala">
+          <div class="gallery-overlay">Annual Charity Gala</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Corporate Party">
+          <div class="
