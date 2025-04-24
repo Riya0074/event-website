@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Vibrance Events</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #f3e5f5;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: #6a1b9a;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #4a148c;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1503424886307-b090341d25d1?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: #6a1b9a;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .image-wrapper {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .image-wrapper img {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .gallery img {
+      width: 250px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .brand-list {
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Bloomline Events</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#">Home</a>
+      <a href="about.html">About</a>
+      <a href="service.html">Services</a>
+      <a href="#">Contact</a>
+      
+    </div>
+  </nav>
+  <header>
+    <h1>Welcome to Vibrance Events</h1>
+  </header>
+
+  <main>
+    <section class="section">
+      <p><strong>At Vibrance Events</strong>, we believe every event is an experience waiting to unfold. With over a decade of industry experience, we specialize in curating unforgettable moments—whether it's a high-profile corporate gala, an intimate wedding, or a buzzing product launch.</p>
+
+      <p>Our team is made up of passionate planners, creative designers, and detail-obsessed coordinators who thrive on turning your ideas into reality. From the first brainstorming session to the final guest departure, we handle every aspect with precision and care.</p>
+    </section>
+
+    <div class="image-wrapper">
+      <img src="https://images.unsplash.com/photo-1565120130290-6ec3fbf6f52a?auto=format&fit=crop&w=1000&q=80" alt="Our Event Services">
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">🎯 Our Mission</h2>
+      <p>To deliver seamless, innovative, and memorable events that exceed expectations—every time.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🌟 What We Do</h2>
+      <ul>
+        <li>💼 Corporate Events & Conferences</li>
+        <li>💍 Luxury Weddings</li>
+        <li>🚀 Product Launches</li>
+        <li>🏢 Exhibitions & Trade Shows</li>
+        <li>🎉 <span class="highlight">Private Parties & Celebrations</span></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">💡 Why Choose Us</h2>
+      <ul>
+        <li>✅ 12+ years of proven excellence</li>
+        <li>🌍 Trusted by 100+ clients globally</li>
+        <li>🎨 In-house creative and production teams</li>
+        <li>📋 Personalized event strategies</li>
+      </ul>
+      <p class="brand-list">We’ve worked with brands like <strong>Coca-Cola</strong>, <strong>Google</strong>, and <strong>L’Oréal</strong>, and we’re ready to make your next event just as impactful.</p>
+    </section>
+
+    <section id="gallery" class="section">
+      <h2 class="section-title">📸 Our Event Gallery</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?auto=format&fit=crop&w=600&q=80" alt="Marriage Event">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Birthday Event">
+        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=600&q=80" alt="Corporate Event">
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

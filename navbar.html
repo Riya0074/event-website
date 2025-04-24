@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Management - MySite</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+    }
+
+    nav {
+      background-color: #34148c;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffccff;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .event-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .event-box {
+      background-color: #f3e5f5;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .event-box:hover {
+      transform: scale(1.05);
+    }
+
+    .event-box h3 {
+      margin-bottom: 1rem;
+      color: #6a1b9a;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #4a148c;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        color: white;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Bloomline Events</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#">Home</a>
+      <a href="about.html">About</a>
+     
+      <a href="service.html">Service</a>
+      <a href="#">Contact</a>
+    
+    </div>
+  </nav>
+
+  <header>
+    <h1>Welcome to MySite Events</h1>
+    <p>Your one-stop solution for unforgettable celebrations. We plan, organize, and deliver magical experiences!</p>
+  </header>
+
+  <section>
+    <h2>Our Specialties</h2>
+    <div class="event-types">
+      <div class="event-box">
+        <h3>Marriage Functions</h3>
+        <p>Beautiful, stress-free wedding events tailored to your dreams.</p>
+      </div>
+      <div class="event-box">
+        <h3>Birthday Parties</h3>
+        <p>Make birthdays memorable with vibrant themes and fun activities.</p>
+      </div>
+      <div class="event-box">
+        <h3>Kitty Parties</h3>
+        <p>Fun and fabulous get-togethers for you and your friends.</p>
+      </div>
+      <div class="event-box">
+        <h3>Corporate Events</h3>
+        <p>Professional, stylish, and perfectly managed business gatherings.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
